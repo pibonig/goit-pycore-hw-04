@@ -7,8 +7,11 @@ def total_salary(path: str):
 
     total_salary_value = 0
 
-    with open(path, 'r', encoding='utf-8') as fh:
-        workers = [line.rstrip().split(',') for line in fh]
+    try:
+        with open(path, 'r', encoding='utf-8') as fh:
+            workers = [line.rstrip().split(',') for line in fh]
+    except FileNotFoundError:
+        print('File not found')
 
     for item in workers:
         total_salary_value += int(item[1])
